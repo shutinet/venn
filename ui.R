@@ -3,6 +3,7 @@ appname <- "venn app"
 header <- shiny::tags$header(
 	class = "main-header", 
 	shiny::tags$span(class = "logo", ""), 
+	shiny::withMathJax(), 
 	shinyjs::useShinyjs(), 
 	shinyjs::extendShinyjs(
 		text = "shinyjs.collapse = function(boxId) {
@@ -12,6 +13,8 @@ header <- shiny::tags$header(
 	shinyWidgets::useSweetAlert(),
 	bsplus::use_bs_tooltip(),
 	rintrojs::introjsUI(),
+	shiny::includeScript("www/d3.v4.min.js"), 
+	shiny::includeScript("www/venn.js"), 
 	shiny::includeCSS("www/venn_app.css"),
 	shiny::includeScript("www/venn_app.js"),
 	
@@ -37,8 +40,8 @@ body <- shinydashboard::dashboardBody(
 	shiny::fluidPage(
 		tags$div(id = "loader", class = "lds-dual-ring"), 
 		shinyjs::hidden(
-			shiny::div(id = 'app-content'#,
-				# source(file.path('ui', 'main.R'), local = TRUE)$value
+			shiny::div(id = 'app-content',
+				source(file.path('ui', 'main.R'), local = TRUE)$value
 			)
 		)
 	)

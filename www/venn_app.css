@@ -102,33 +102,17 @@
 .bttn-no-fill>icon {
 	font-size: 40px;
 }
-.table-collapsed {
-	width: 100%;
-	table-layout: fixed;
-}
-.table-collapsed td {
-	vertical-align: bottom;
-	text-align: center;
-}
 .modal-dialog {
 	width: 100%;
 	min-width: 600px
 }
-.table-params {
+table {
 	width: 100%;
-	table-layout: fixed;
-}
-.table-params tr{
-	vertical-align: bottom;
-}
-.table-params td{
-	width: 50%;
-	padding: 5px;
-	text-align: center;
-	vertical-align: bottom;
+	border-collapse: separate;
+	border-spacing: 5px;
 }
 table td input {
- width: 100%;   
+	width: 100%;
 }
 .swal2-container {
   z-index: 1044 !important;
@@ -154,4 +138,19 @@ tr.shown td.details-control{
     /* 100% = dialog height, 120px = header + footer */
     max-height: 80vh;
     overflow-y: scroll;
+}
+#venn_diag {
+	font-size: 34px;
+}
+.venntooltip {
+  position: absolute;
+  text-align: center;
+  width: 128px;
+  height: 20px;
+  background: #333;
+  color: #ddd;
+  padding: 2px;
+  border: 0px;
+  border-radius: 8px;
+  opacity: 0;
 }
