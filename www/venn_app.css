@@ -145,8 +145,9 @@ tr.shown td.details-control{
 .venntooltip {
   position: absolute;
   text-align: center;
-  width: 128px;
-  height: 20px;
+  width: 100px;
+  /* min-height: 20px; */
+  height: auto;
   background: #333;
   color: #ddd;
   padding: 2px;
