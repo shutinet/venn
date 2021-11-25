@@ -5,12 +5,13 @@ observeEvent(input$venn_file, {
 	json_data <- tryCatch({
 		if (is.null(file)) custom_stop("invalid", "a file is required")
 		inputs <- "venn_file"
-		conditions <- any(ext %in% c("ods", "xlsx"))
+		conditions <- any(ext %in% c("ods", "xlsx", "csv"))
 		msgs <- "The file need to be an ods or xlsx file"
 		check_inputs(inputs, conditions, msgs)
 		
 		data <- if (any(ext == "ods")) readODS::read_ods(file$datapath)
-			else openxlsx::read.xlsx(file$datapath)
+			else if (any(ext == "xlsx")) openxlsx::read.xlsx(file$datapath)
+			else read.csv(file$datapath)
 		nms <- unlist(lapply(1:ncol(data), function(i) 
 			combn(colnames(data), i, simplify = FALSE)), recursive = FALSE)
 		ll <- unlist(lapply(1:ncol(data), function(i) 

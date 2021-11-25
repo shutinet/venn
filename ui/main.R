@@ -1,6 +1,6 @@
 shiny::tags$div(
 	shinydashboard::box(width = 3, 
-		shiny::fileInput("venn_file", "data file", accept = c(".ods", ".xlsx")), 
+		shiny::fileInput("venn_file", "data file", accept = c(".ods", ".xlsx", ".csv")), 
 	), 
 	
 	shinydashboard::box(width = 9, 
