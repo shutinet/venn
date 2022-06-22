@@ -7,14 +7,36 @@ Shiny.addCustomMessageHandler("venn_data", function(data) {
 	var chart = venn.VennDiagram()
                  .width(600)
                  .height(500),
-		div = d3.select("#venn_diag"),
+		div = d3.select("#venn_diag").datum(data),
+		layout = chart(div),
+		textCentres = layout.textCentres,
 		tooltip = d3.select(".venntooltip");
-	
-    div.datum(data).call(chart);
+
+    layout.enter
+        .append("text")
+        .attr("class", "sublabel")
+        .text(function(d) { return "size " + d.size; })
+        .style("fill", "#666")
+        .style("font-size", "0px")
+        .attr("text-anchor", "middle")
+        .attr("dy", "0")
+        .attr("x", chart.width() /2)
+        .attr("y", chart.height() /2);
+    layout.update
+        .selectAll(".sublabel")
+        .filter(function (d) { return d.sets in textCentres; })
+        .text(function(d) { return "size " + d.size; })
+        .style("font-size", "10px")
+        .attr("dy", "18")
+        .attr("x", function(d) { return Math.floor(textCentres[d.sets].x);})
+        .attr("y", function(d) { return Math.floor(textCentres[d.sets].y);});
+    /*
+	div.call(chart);
 	div.selectAll("path")
 		.style("stroke-opacity", 0)
 		.style("stroke", "#fff")
-		.style("stroke-width", 3)
+		.style("stroke-width", 3);
+	*/
 	div.selectAll("g")
 		.on("mouseover", function(d, i) {
 			// sort all the areas relative to the current item
@@ -46,4 +68,5 @@ Shiny.addCustomMessageHandler("venn_data", function(data) {
 				.style("fill-opacity", d.sets.length == 1 ? .25 : .0)
 				.style("stroke-opacity", 0);
 		});
+
 })

@@ -5,7 +5,7 @@ account: shutinet
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5180579
-bundleId: 5279884
+bundleId: 6031944
 url: https://shutinet.shinyapps.io/venn/
-when: 1637587606.84839
-lastSyncTime: 1637587606.84839
+when: 1655899274.75292
+lastSyncTime: 1655899274.75292
